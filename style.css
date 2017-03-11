@@ -1,0 +1,17 @@
+/* For mobile */
+* {
+  box-sizing: border-box; }
+
+body {
+  background-color: azure;
+  padding: 0 5%; }
+  body input {
+    width: 100%;
+    margin: auto; }
+
+/* For descop: */
+@media only screen and (min-width: 600px) {
+  body {
+    background-color: blue; } }
+
+/*# sourceMappingURL=style.css.map */
