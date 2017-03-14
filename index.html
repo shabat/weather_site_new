@@ -3,7 +3,7 @@
 <head>
     <title>Weather</title>
     <link rel="stylesheet"  href="style.css">
-
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <script
   src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -11,9 +11,42 @@
 </head>
 
 <body>
-<input type="text">
-<canvas   id="lineChart" width="400px" height="400px"></canvas>
 
+ <div class="container">
+  <div id="top">
+    <input type="text" id="city">
+      <button id="submit" type="submit"></button>
+
+  </div>
+<div id="mid">
+
+    <div id="mid_mid">
+    <div id="locationData">
+     <h2 id="city">Town</h2>
+     <h1 id="country">Country</h1>
+    </div>
+     <h1 id="temp">15C</h1>
+    </div>
+
+     <h2 id="tdate">03.02.17</h2>
+     <div id="icon"></div>
+</div>
+
+<div id="bottom">
+<canvas   id="lineChart" ></canvas>
+     <div id="days">
+         <ul>
+             <li>mon</li>
+             <li>tue</li>
+             <li>wed</li>
+             <li>thu</li>
+             <li>fri</li>
+             <li>sat</li>
+             <li>sun</li>
+         </ul>
+     </div>
+</div>
+ </div>
 
 
 
