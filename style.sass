@@ -4,6 +4,8 @@
   font-family: Arial
   font-weight: bold
   color: white
+*:focus
+  outline: none
 html, body
   height: 100%
 body
@@ -17,6 +19,11 @@ input
   background-color: transparent
   width: 90%
   display: inline-block
+input:focus
+  background: transparent
+input:-webkit-autofill
+  background: transparent
+  color: #ffffff
 button
   display: inline-block
   width: 25px
@@ -37,7 +44,7 @@ button
 
 #mid
   height: 30%
-
+  overflow: hidden
 
 #mid_mid
   display: flex
@@ -48,17 +55,20 @@ button
   h1
     font-size: 3em
     margin: 0
+  #country
+    font-size: 1em
   h2
     font-size: 2em
     margin: 0
-
 #locationData,#temp
   display: inline-block
 #temp
+  font-size: 3em
   float: right
   vertical-align: middle
 #tdate
   float: right
+  margin-top: 2%
 
 #icon
   position: absolute
@@ -84,6 +94,47 @@ button
   li
     display: inline-block
     font-weight: bold
+
+
+
+
+
+
+/*
+  * Remove text-shadow in selection highlight:
+  * https://twitter.com/miketaylr/status/12228805301
+  *
+  * These selection rule sets have to be separate.
+  * Customize the background color to match your design.
+  */
+
+::-moz-selection
+  background: #b3d4fc
+  text-shadow: none
+
+
+::selection
+  background: #b3d4fc
+  text-shadow: none
+
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video
+  vertical-align: middle
+
+
+
+
 /* For descop: */
 @media only screen and (min-device-width: 600px)
   body
