@@ -13,6 +13,7 @@ button.on('click', function (){
             $('#country').html(data.location.country);
             $('#temp').html(data.current.temp_c +'&deg;C');
             $('#town').html(data.location.name);
+            $('#tdate').html(data.location.localtime);
         }
     })
 });
