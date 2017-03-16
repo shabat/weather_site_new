@@ -76,6 +76,10 @@ window.addEventListener("load",function() {
         window.scrollTo(0, 1);
     }, 0);
 });
+
+function toggleFullScreen() {
+        document.documentElement.requestFullscreen();
+}
 /*
         function getLocation() {
             if (navigator.geolocation) {
