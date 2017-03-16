@@ -35,9 +35,10 @@ button {
   width: 25px;
   height: 25px;
   margin-top: 3%;
-  background-image: url(37275f5a.png);
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
+  background-image: url("./search-icon-2.png");
+  background-size: 35px 35px;
+  background-color: transparent;
+  background-position: 50% 10%;
   border: 0; }
 
 .container {
@@ -78,16 +79,26 @@ button {
   vertical-align: middle; }
 
 #tdate {
+  font-size: 1em;
   float: right;
   margin-top: 2%; }
 
+#condition {
+  font-size: 1em;
+  float: left;
+  margin-top: 2%;
+  margin-left: 2%; }
+
 #icon {
   position: absolute;
-  top: 30%;
+  top: 20%;
   right: 0;
-  width: 150px;
-  height: 150px;
-  background-color: #34396e;
+  width: 100%;
+  height: 335px;
+  background-image: url("./soleil_i.png");
+  background-size: 320px 300px;
+  background-repeat: no-repeat;
+  background-position: 100% 0;
   z-index: -1; }
 
 #lineChart {

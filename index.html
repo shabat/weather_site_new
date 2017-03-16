@@ -28,12 +28,17 @@
      <h1 id="temp">15C</h1>
     </div>
 
+    <div>
      <h2 id="tdate">03.02.17</h2>
+        <h2 id="condition"></h2>
+    </div>
      <div id="icon"></div>
 </div>
 
 <div id="bottom">
-<canvas   id="lineChart" ></canvas>
+<svg   id="lineChart" >
+    <polyline id="line" points="20,20 200,200" style="fill:none; stroke:white; stroke-width:3"/>
+</svg>
      <div id="days">
          <ul>
              <li>mon</li>
