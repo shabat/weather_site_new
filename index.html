@@ -9,6 +9,7 @@
   src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
 </head>
 
 <body>
@@ -17,43 +18,38 @@
   <div id="top">
     <input type="text" id="city">
       <button id="submit" type="submit"></button>
-
+      <canvas id="dayChart" ></canvas>
   </div>
 <div id="mid">
-
-    <div id="mid_mid">
-    <div id="locationData">
-     <h2 id="town">Town</h2>
-     <h1 id="country">Country</h1>
+    <div id="mid_top">
+        <div id="wind"></div>
+        <div id="humidity"></div>
+        <div id="toggle"></div>
     </div>
-     <h1 id="temp">15C</h1>
+    <div id="mid_mid">
+        <div id="locationData">
+            <h2 id="town">Town</h2>
+            <h1 id="country">Country</h1>
+        </div>
+        <h1 id="temp">15C</h1>
     </div>
 
     <div>
-     <h2 id="tdate">03.02.17</h2>
+        <h2 id="tdate">03.02.17</h2>
         <h2 id="condition"></h2>
     </div>
      <div id="icon"></div>
 </div>
 
 <div id="bottom">
-<svg   id="lineChart" >
-    <polyline id="line" points="20,20 200,200" style="fill:none; stroke:white; stroke-width:3"/>
-</svg>
-     <div id="days">
-         <ul>
-             <li>mon</li>
-             <li>tue</li>
-             <li>wed</li>
-             <li>thu</li>
-             <li>fri</li>
-             <li>sat</li>
-             <li>sun</li>
-         </ul>
-     </div>
+
+    <canvas id="myChart"></canvas>
+    <script>
+
+    </script>
+
 </div>
  </div>
-
 
 
   <script type="text/javascript" src="script.js"></script>

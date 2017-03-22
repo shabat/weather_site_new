@@ -1,12 +1,10 @@
 var input = $('#city');
 var button = $('#submit');
 var ip = 'auto:ip';
-var forecastArr = [];
-var daysArr = [];
-var line = $('#line');
-var points = line.attr('points');
-var mappedPoints = [];
-var mappedCount = 0;
+var forecastArr = [], dayForecast = [];
+
+Chart.defaults.global.defaultFontColor='white';
+var ctx = $("#myChart");
 
 function map (value, minRange, maxRange, newMinRange, newMaxRange){
     mappedPoints[mappedCount]=Math.round((((value - minRange) / (maxRange - minRange)) * (newMaxRange - newMinRange) + newMinRange));
@@ -33,29 +31,119 @@ function getweather (cityName) {
             $('#tdate').html(data.location.localtime);
             $('#condition').html(data.current.condition.text);
 
-            var i = 0; var j=0;
-            var widthBotCanvas = parseInt($('#lineChart').css('width'));
-            var heightBotCanvas = parseInt($('#lineChart').css('height'));
-            var step = Math.round(widthBotCanvas/7);
-            while(i<7){
+            for(var i=0, j=0; i<7, j<=24; i++, j+=4){
                 forecastArr.push(data.forecast.forecastday[i].day.avgtemp_c);
-                i++;
-                daysArr.push(Math.round((step*i)-(step/2)));
+                if (j == 24){
+                    dayForecast.push(data.forecast.forecastday[0].hour[23].temp_c);
+                }
+                else{
+                    dayForecast.push(data.forecast.forecastday[0].hour[j].temp_c);
 
+                }
             }
-            console.log(daysArr, forecastArr);
-            while(j<7){
-                map(forecastArr[j], Math.max.apply(null,forecastArr),Math.min.apply(null,forecastArr), 10, heightBotCanvas-10 );
-                j++;
-            }
-            console.log(mappedPoints);
+            console.log(forecastArr,dayForecast);
 
-                points = ''+daysArr[0]+','+mappedPoints[0] +' '+daysArr[1]+','+ mappedPoints[1]+' '+daysArr[2]+','+ mappedPoints[2]+' '+daysArr[3]+','+ mappedPoints[3]+' '+daysArr[4]+','+ mappedPoints[4]+' '+daysArr[5]+','+ mappedPoints[5]+' '+daysArr[6]+','+ mappedPoints[6]+' ';
-            console.log(points);
-            $('#line').attr('points', points);
-            mappedCount = 0; daysArr = []; forecastArr = [];
-            }
-        })
+            var ctx = document.getElementById("dayChart");
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["0pm", "4am", "8am", "12am", "16pm", "20pm", "23pm"],
+                    datasets: [{
+                        label: 'day forecast',
+                        data: dayForecast,
+                        fill: false,
+                        backgroundColor: [
+                            'rgba(255, 255, 255, 1)'
+                        ],
+                        borderColor: [
+                            'rgba(255,255,255,0.5)'
+                        ]
+                    }]
+                },
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        xAxes: [{
+                            gridLines: {
+                                display:true,
+                                color: "rgba(0, 255 255, 1)"
+                            }
+                        }],
+                        yAxes: [{
+                            gridLines: {
+                                display:false,
+                                color: "rgba(0, 255 255, 1)"
+                            }
+                        }]
+                    },
+                    tooltips: {
+                        callbacks: {
+                            label: function (tooltipItem) {
+                                console.log(tooltipItem)
+                                return tooltipItem.yLabel;
+                            }
+                        }
+                    }
+                }
+            });
+
+            var ctx = document.getElementById("myChart");
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
+                    defaultFontColor: '#fff',
+                    datasets: [{
+                        label: 'weekly forecast',
+                        data: forecastArr,
+                        fill: false,
+                        backgroundColor: [
+                            'rgba(255, 255, 255, 1)'
+                        ],
+                        borderColor: [
+                            'rgba(255,255,255,0.5)'
+                        ]
+                    }]
+                },
+                options: {
+                    legend: {
+                        display: false,
+                    },
+
+                    tooltips: {
+                        callbacks: {
+                            label: function (tooltipItem) {
+                                console.log(tooltipItem)
+                                return tooltipItem.yLabel;
+                            }
+                        }
+                    },
+                    scales: {
+                        xAxes: [{
+                            gridLines: {
+                                display:true,
+                                color: "rgba(0, 255 255, 1)"
+                            }
+                        }],
+                        yAxes: [{
+                            gridLines: {
+                                display:true,
+                                color: "rgba(0, 255 255, 1)"
+                            }
+                        }]
+                    }
+                }
+
+
+            });
+
+
+            forecastArr = []; dayForecast = [];
+
+        }
+    })
 }
 
 
@@ -78,8 +166,16 @@ window.addEventListener("load",function() {
 });
 
 function toggleFullScreen() {
-        document.documentElement.requestFullscreen();
-}
+    document.documentElement.requestFullscreen();
+};
+
+
+
+
+
+
+
+
 /*
         function getLocation() {
             if (navigator.geolocation) {
@@ -91,4 +187,28 @@ function toggleFullScreen() {
             console.log(position.coords.longitude);
         }
         getLocation();
-*/
+
+ points += ''+daysArr[j]+','+mappedPoints[j]+' ';
+ linechart.append('<text'+' '+'x="'+ daysArr[j]+'"'+' '+ 'y="'+mappedPoints[j]+'"' +'>'+ forecastArr[j]+ '</text>' );
+
+
+
+ <svg   id="lineChart" >
+ <g>
+ <polyline id="line" points="20,20 200,200" style="fill:none; stroke:white; stroke-width:3"/>
+ </g>
+ </svg>
+ <div id="days">
+ <ul>
+ <li>mon</li>
+ <li>tue</li>
+ <li>wed</li>
+ <li>thu</li>
+ <li>fri</li>
+ <li>sat</li>
+ <li>sun</li>
+ </ul>
+ </div>
+ */
+
+
